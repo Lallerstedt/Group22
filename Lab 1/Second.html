@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dinner planner</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron">
+    <h1>Dinner Planner</h1>
+  </div>
+
+  <div class="row" id="sidebarView">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <nav class="navbar navbar-default navbar-fixed-side">
+
+        <div  class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+          <div id="sidebarView_guests">
+            <h4>My dinner: 
+              <span id="numberOfGuests"></span>
+            </h4>
+          </div>
+
+          <br>
+          <div class="col-lg-12-1 col-md-12-1 col-sm-12-1 col-xs-12-1">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h5>Dish name</h5>
+                <h6>
+                  <div id="sidebarView_menu">
+                    <span id="menu"></span>
+                  </div>
+                </h6>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h5> PRICE </h5>
+                <h6>
+                  <div id="sidebarView_singlePrice">
+                    <span id="singlePrice"></span>
+                  </div>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <br>
+
+
+          <div class="col-lg-12-2 col-md-12-2 col-sm-12-2 col-xs-12-2" >
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h5>Total price</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div id="sidebarView_totalPrice">
+                  <span id="totalPrice"></span>
+                </div>
+              </h5>
+            </div>
+          </div>
+          <br>
+          <div class="col-lg-12-3 col-md-12-3 col-sm-12-3 col-xs-12-3" >
+            <center>
+              <button type="button" class="btn btn-default" id = "button">Confirm Dinner</button>
+            </center>
+          </div>
+          <br>
+        </div>
+
+      </nav>
+    </div>
+
+
+
+          <nav class="navbar navbar-default navbar-fixed-side" id="navbar_left">
+        <h3>Find a dish</h3>
+        <div class="row" >
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id = "keyword">
+            Enter Keyword:
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id = "select_type">
+            <select>
+              <option value="volvo">All</option>
+              <option value="saab">Main dish</option>
+              <option value="opel">Starter</option>
+              <option value="audi">Dessert</option>
+              <option value="audi">...</option>
+            </select>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <form>
+              <button type="button" class="btn btn-default" id = "button">Search</button>
+            </form>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          </div>
+          <br>
+          <br>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "food_pictures">
+
+            <div id="dishsearchView">
+              <span id="all_dishes"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+
+  </div>
+
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+  <!-- The application JavaScript code -->
+  <script src="js/app.js"></script>
+  <script src="js/model/dinnerModel.js"></script>
+
+  <!-- TODO: Here you should include JS code for your other views -->
+  <script src="js/view/sidebarView.js"></script>
+  <script src="js/view/dishsearchView.js"></script> 
+  <script src="js/view/dishitemView.js"></script> 
+  <script src="js/view/peopleView.js"></script> 
+  <script src="js/view/menuDescription.js"></script> 
+  <script src="js/view/menuOverview.js"></script> 
+</body>
+</html>
