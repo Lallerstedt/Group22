@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <script src="js/app.js"></script>
+  <script src="js/model/dinnerModel.js"></script>
+  <script src="js/view/startView.js"></script>
+  <script src="js/view/sidebarView.js"></script>
+  <script src="js/view/dishsearchView.js"></script>
+  <script src="js/view/dishitemView.js"></script>
+  <script src="js/view/peopleView.js"></script>
+  <script src="js/view/menuDescription.js"></script>
+  <script src="js/view/menuOverview.js"></script>
+  <script src="js/controller/startController.js"></script>
+  <script src="js/controller/secondController.js"></script>
+  <script src="js/controller/dishSearchController.js"></script>
+  <script src="js/controller/dishItemController.js"></script>
+  <script src="js/controller/descriptionController.js"></script>
+  <script src="js/controller/peopleController.js"></script>
+  </head>
+  <body>
+
+<div class="jumbotron">
+      <h1>Dinner Planner</h1>
+</div>
+<div class ="startView">
+      <div class="startpage">
+        <div class="lg-col-12 md-col-12 sm-col-12 xs-col-12" id = "first_grid">
+          <h6>Welcome to Siri and Hedvig's fabulous website about your dinner planning </h6>
+          <br>
+          <div>
+           <button class= "start_button btn" id="button">Create dinner</button>
+         </div>
+       </div>
+     </div>
+     </div>
+
+<div class="second">
+  <div class = "sidebarView" class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <nav class="navbar navbar-default navbar-fixed-side">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+          <h5>Guests:
+            <span class="numberOfGuests"></span>
+            <button class = "plus_guest" class="btn"> + </button>
+            <button class="minus_guest" class="btn"> - </button>
+          </h5>
+          <br>
+          <div class = "row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h5>Dish name</h5>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h5> PRICE </h5>
+            </div>
+          </div>
+          <span class="menu"></span>
+          <br>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h5>Total price</h5>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div id="sidebarView_totalPrice">
+             <h5><span class="totalPrice"></span></h5>
+           </div>
+          </div>
+         </div>
+       </div>
+       <br>
+        <center>
+          <button class="confirm_button" id="button"> Confirm dinner </button>
+        </center>
+      <br>
+    </nav>
+  </div>
+</div>
+  <div class="dishsearchView">
+   <nav class="navbar navbar-default navbar-fixed-side" id="navbar_left">
+    <h3>Find a dish</h3>
+    <div class="row" >
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      </div>
+      <form>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <input type='text' class = "keyword" id="keyword_form" placeholder='Enter keyword' />
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id = "select_type">
+          <select id = "type" class="select">
+            <option value="1">All</option>
+            <option value="2">Main dish</option>
+            <option value="3">Starter</option>
+            <option value="4">Dessert</option>
+          </select>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+          <button type="button" class="btn btn-default" id = "button">Search</button>
+        </div>
+      </form>
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      </div>
+      <br>
+      <br>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "food_pictures">
+        <span id="all_dishes"></span>
+    </div>
+    </nav>
+  </div>
+</div>
+
+<div class='dishinfo'>
+  <div class = "sidebarView" class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <nav class="navbar navbar-default navbar-fixed-side">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+          <h5>Guests:
+            <span class="numberOfGuests"></span>
+            <button class = "plus_guest" class="btn"> + </button>
+            <button class="minus_guest" class="btn"> - </button>
+          </h5>
+          <br>
+          <div class = "row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h5>Dish name</h5>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <h5> PRICE </h5>
+            </div>
+          </div>
+          <span class="menu"></span>
+          <br>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h5>Total price</h5>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div id="sidebarView_totalPrice">
+             <h5><span class="totalPrice"></span></h5>
+           </div>
+          </div>
+         </div>
+       </div>
+       <br>
+        <center>
+          <button class="confirm_button" id="button"> Confirm dinner </button>
+        </center>
+      <br>
+    </nav>
+  </div>
+</div>
+      <nav class="navbar navbar-default navbar-fixed-side" id="navbar_left">
+        <div class="dishitemView">
+          <div class ="row">
+            <span id="dish_info"></span>
+            <br>
+            <br>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id = "ingredients_area">
+
+                <h5>Ingredients for: <span id="dish_number"></span> people</h5>
+
+
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                  <div id="dishitemView">
+                    <span id="dish_ingredients"></span>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "total_price">
+                <div class="row">
+                  <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                  </div>
+                  <span id="dishinfo_totalPrice"></span> SEK
+                </div>
+                <br>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <div id="dishInfoPrice">
+                    <span id="dishPrice"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+
+          <div class="row" >
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <h2>Preparation</h2>
+              <span id="dish_description"></span>
+              <br>
+            </div>
+
+            <div id ="prep_button_area">
+            <br>
+            <br>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" = id "ingredient">
+                <button class = "menu_add" type="button" class="btn btn-default" id = "button">Add to menu</button>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+               <button class = "back_search" type="button" class="btn btn-default" id = "button">Back to search</button>
+             </div>
+           </div>
+         </div>
+       </div>
+     </nav>
+</div>
+
+
+
+
+
+
+
+ <div class='yourmenu'>
+  <div class="row">
+    <div class="col-sm-1 col-lg-1 col-md-1 col-sx-0">
+    </div>
+    <div class="col-sm-5 col-lg-5 col-md-5 col-sx-6">
+      <div class = "peopleView">
+       <span id="numberOfGuests"></span>
+     </div>
+   </div>
+   <div class = "peopleView">
+   <div class="col-sm-2 col-lg-2 col-md-2 col-sx-0">
+   </div>
+   <div class="col-sm-4 col-lg-4 col-md-4 col-sx-6">
+    <button class="go_back" class="btn btn-default" id = "button">Go back and edit dinner</button>
+  </div>
+</div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-side">
+  <div class = "menuDescription" class="row">
+    <div class="col-sm-1 col-lg-1 col-md-1 col-sx-0">
+    </div>
+    <div class="col-sm-10 col-lg-10 col-md-10 col-sx-11"><br>
+     <span id="dish_name"></span>
+   </div>
+   <div class="col-sm-1 col-lg-1 col-md-1 col-sx-1">
+    <span id="totalPrice"></span>
+  </div>
+  <center>
+  <button class="print" class="btn btn-default" id = "button">Print Full Recipe</button>
+</center>
+</div>
+</nav>
+
+</div>
+
+<div class='menuinfo'>
+   <div class="row">
+    <div class="col-sm-1 col-lg-1 col-md-1 col-sx-0">
+    </div>
+    <div class="col-sm-5 col-lg-5 col-md-5 col-sx-6">
+      <div class = "peopleView">
+       <span id="numberOfGuests"></span>
+     </div>
+   </div>
+   <div class = "peopleView">
+   <div class="col-sm-2 col-lg-2 col-md-2 col-sx-0">
+   </div>
+   <div class="col-sm-4 col-lg-4 col-md-4 col-sx-6">
+    <button class="go_back" class="btn btn-default" id = "button">Go back and edit dinner</button>
+  </div>
+</div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-side">
+ <div class = "menuOverview" class="row" >
+   <div class="col-sm-1 col-lg-1 col-md-1 col-sx-1">
+   </div>
+   <div class="col-sm-11 col-lg-11 col-md-11 col-sx-11">
+     <span id = "dish_name"></span>
+   </div>
+</nav>
+</div>
+
+
+</body>
