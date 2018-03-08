@@ -1,0 +1,258 @@
+img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+}
+
+/* Add a hover effect (blue shadow) */
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#navbar_left{
+  float: left;
+  width: 75%;
+  padding-top: 2%;
+  padding-left: 1%;
+}
+
+#dishitemView{
+  text-align: left;
+}
+
+#dishinfo_img{
+  height: 80%;
+  width: 80%;
+}
+
+#dish_info{
+  padding-left: 6em;
+}
+#dishinfo_img:hover {
+  border-bottom: 0px;
+  box-shadow: 0 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+.loader {
+    border: 16px solid #dbdbdb;
+    border-top: 16px solid #82bbbf;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.jumbotron{
+      height: auto;
+      }
+
+h1 {
+      text-align: center;
+      font-weight: 200;
+
+      }
+
+
+#button{
+      background-color: #a9d0e0;
+      margin-top: 0px;
+
+      }
+
+#startButton{
+      background-color: #a9d0e0;
+      margin-top: 0px;
+
+      }      
+
+@font-face {
+      font-family: 'Avenir Next';
+      src: url("http://www.yoursite.com/fonts/Avenir_Next.otf"); /* File to be stored at your site */
+      }
+
+.container_two {
+                  text-align: center;
+                  background-color: white;
+                  margin-left: 30em;
+                  margin-right: 30em;
+                  margin-top: 2em;
+                  padding: 1.3em;
+
+                  }
+
+
+.container_four {
+                  text-align: center;
+
+                  background-color: #white;
+                  margin-left: 30em;
+                  margin-right: 20em;
+                  margin-top: 1em;
+                  padding: 1em;
+
+                  }
+
+
+.inner {
+
+                  height: 30px;
+                  width: 200px;
+                  position: absolute;
+                  background-color: grey;
+                  text-align: left;
+                  border-style: solid;
+                  border-width: thin;
+
+
+                  }
+
+.row {
+                  padding: 0px;
+                  }
+
+.row-height {
+                  height: 0px;
+                  text-align: center;
+                  padding-top: 0px;
+                  }
+
+
+
+
+#first_grid {
+                      background-color: #f5f3f3;
+                      text-align: center;
+                      background-color: white;
+                      margin-left: 20%;
+                      margin-right: 20%;
+                      padding: 1.3em;
+                      }
+#find_dish {
+                      background-color: white;
+                      border-left-width: 100px;
+                      height: auto;
+                      padding-right: 0px;
+                      padding-top:10px;
+                      text-align: left;
+                      border-style: solid;
+                      border-width: thin;
+                      height: 3000px;
+                      }
+.keyword   {
+                      background-color: white;
+                      height:auto;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                      border-style: solid;
+                      border-width: thin;
+                      width: 200px;
+
+                      }
+#select_type  {
+                      height:auto;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                      width: 200px;
+
+                      }
+#food_pictures{
+                      text-align: center;
+                      height: 3000px;
+                      padding-left: 50px;
+                      padding-top:50px;
+                      }
+#picture_small{
+                      text-align: center;
+
+                      border-style: solid;
+                      border-width: thin;
+                      height: 90px;
+                      width: 90px;
+
+                      }
+#food_info {
+                      background-color: white;
+
+                      height: auto;
+                      padding-right: 0px;
+                      border-left-style: solid;
+                      border-left-width: thin;
+                      border-color: black;
+                      border-top-style: solid;
+                      border-width: thin;
+
+                      }
+#ingredients_area {
+                      text-align: left;
+                      background-color: #ffecb3;
+
+                      height: auto;
+                      border-style: solid;
+                      border-width: medium;
+
+                      }
+#ingredient {
+                      text-align: left;
+                      background-color: #ffecb3;
+
+                      height: auto;
+                      border-style: solid;
+                      border-width: thin;
+
+                      }
+#total_price {
+                      text-align: left;
+                      background-color: #ffecb3;
+
+                      height: auto;
+
+
+                      }
+
+
+#menu_done{
+    margin-top: 1em;
+
+}
+
+.mobile-margin{
+  margin-bottom: 30px;
+}
+
+
+
+#menu_done_button{
+  margin-top: 0px;
+}
+
+#dinner_planner {
+  margin: 0px;
+}
+
+@media (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+@media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
+@media (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
+
+
+body {
+        background-color: white;
+        font-family: "Avenir Next" !important;
+
+
+
+                        }
+
+                        }
