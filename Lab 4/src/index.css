@@ -1,13 +1,13 @@
 img {
-    border: 1px solid #ddd; /* Gray border */
-    border-radius: 4px;  /* Rounded border */
-    padding: 5px; /* Some padding */
-    width: 150px; /* Set a small width */
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
 }
 
 /* Add a hover effect (blue shadow) */
 img:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
 #navbar_left{
@@ -35,193 +35,189 @@ img:hover {
 }
 
 .loader {
-    border: 16px solid #dbdbdb;
-    border-top: 16px solid #82bbbf;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;;
+  border: 16px solid #dbdbdb;
+  border-top: 16px solid #82bbbf;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
 .jumbotron{
-      height: auto;
-      }
+  height: auto;
+}
 
 h1 {
-      text-align: center;
-      font-weight: 200;
+  text-align: center;
+  font-weight: 200;
 
-      }
+}
 
 
 #button{
-      background-color: #a9d0e0;
-      margin-top: 0px;
+  background-color: #a9d0e0;
+  margin-top: 0px;
 
-      }
+}
 
 #startButton{
-      background-color: #a9d0e0;
-      margin-top: 0px;
+  background-color: #a9d0e0;
+  margin-top: 0px;
 
-      }      
+}      
 
-@font-face {
-      font-family: 'Avenir Next';
-      src: url("http://www.yoursite.com/fonts/Avenir_Next.otf"); /* File to be stored at your site */
-      }
 
 .container_two {
-                  text-align: center;
-                  background-color: white;
-                  margin-left: 30em;
-                  margin-right: 30em;
-                  margin-top: 2em;
-                  padding: 1.3em;
+  text-align: center;
+  background-color: white;
+  margin-left: 30em;
+  margin-right: 30em;
+  margin-top: 2em;
+  padding: 1.3em;
 
-                  }
+}
 
 
 .container_four {
-                  text-align: center;
+  text-align: center;
 
-                  background-color: #white;
-                  margin-left: 30em;
-                  margin-right: 20em;
-                  margin-top: 1em;
-                  padding: 1em;
+  background-color: #white;
+  margin-left: 30em;
+  margin-right: 20em;
+  margin-top: 1em;
+  padding: 1em;
 
-                  }
+}
 
 
 .inner {
 
-                  height: 30px;
-                  width: 200px;
-                  position: absolute;
-                  background-color: grey;
-                  text-align: left;
-                  border-style: solid;
-                  border-width: thin;
+  height: 30px;
+  width: 200px;
+  position: absolute;
+  background-color: grey;
+  text-align: left;
+  border-style: solid;
+  border-width: thin;
 
 
-                  }
+}
 
 .row {
-                  padding: 0px;
-                  }
+  padding: 0px;
+}
 
 .row-height {
-                  height: 0px;
-                  text-align: center;
-                  padding-top: 0px;
-                  }
+  height: 0px;
+  text-align: center;
+  padding-top: 0px;
+}
 
 
 
 
 #first_grid {
-                      background-color: #f5f3f3;
-                      text-align: center;
-                      background-color: white;
-                      margin-left: 20%;
-                      margin-right: 20%;
-                      padding: 1.3em;
-                      }
+  background-color: #f5f3f3;
+  text-align: center;
+  background-color: white;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 1.3em;
+}
 #find_dish {
-                      background-color: white;
-                      border-left-width: 100px;
-                      height: auto;
-                      padding-right: 0px;
-                      padding-top:10px;
-                      text-align: left;
-                      border-style: solid;
-                      border-width: thin;
-                      height: 3000px;
-                      }
+  background-color: white;
+  border-left-width: 100px;
+  height: auto;
+  padding-right: 0px;
+  padding-top:10px;
+  text-align: left;
+  border-style: solid;
+  border-width: thin;
+  height: 3000px;
+}
 .keyword   {
-                      background-color: white;
-                      height:auto;
-                      padding-left: 0px;
-                      padding-right: 0px;
-                      border-style: solid;
-                      border-width: thin;
-                      width: 200px;
+  background-color: white;
+  height:auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-style: solid;
+  border-width: thin;
+  width: 200px;
 
-                      }
+}
 #select_type  {
-                      height:auto;
-                      padding-left: 0px;
-                      padding-right: 0px;
-                      width: 200px;
+  height:auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 200px;
 
-                      }
+}
 #food_pictures{
-                      text-align: center;
-                      height: 3000px;
-                      padding-left: 50px;
-                      padding-top:50px;
-                      }
+  text-align: center;
+  height: 3000px;
+  padding-left: 50px;
+  padding-top:50px;
+}
 #picture_small{
-                      text-align: center;
+  text-align: center;
 
-                      border-style: solid;
-                      border-width: thin;
-                      height: 90px;
-                      width: 90px;
+  border-style: solid;
+  border-width: thin;
+  height: 90px;
+  width: 90px;
 
-                      }
+}
 #food_info {
-                      background-color: white;
+  background-color: white;
 
-                      height: auto;
-                      padding-right: 0px;
-                      border-left-style: solid;
-                      border-left-width: thin;
-                      border-color: black;
-                      border-top-style: solid;
-                      border-width: thin;
+  height: auto;
+  padding-right: 0px;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-color: black;
+  border-top-style: solid;
+  border-width: thin;
 
-                      }
+}
 #ingredients_area {
-                      text-align: left;
-                      background-color: #ffecb3;
+  text-align: left;
+  background-color: #ffecb3;
 
-                      height: auto;
-                      border-style: solid;
-                      border-width: medium;
+  height: auto;
+  border-style: solid;
+  border-width: medium;
 
-                      }
+}
 #ingredient {
-                      text-align: left;
-                      background-color: #ffecb3;
+  text-align: left;
+  background-color: #ffecb3;
 
-                      height: auto;
-                      border-style: solid;
-                      border-width: thin;
+  height: auto;
+  border-style: solid;
+  border-width: thin;
 
-                      }
+}
 #total_price {
-                      text-align: left;
-                      background-color: #ffecb3;
+  text-align: left;
+  background-color: #ffecb3;
 
-                      height: auto;
+  height: auto;
 
 
-                      }
+}
 
 
 #menu_done{
-    margin-top: 1em;
+  margin-top: 1em;
 
 }
 
@@ -248,10 +244,10 @@ h1 {
 
 
 body {
-        background-color: white;
-        font-family: "Avenir Next" !important;
+  background-color: white;
+  font-family: 'Raleway', sans-serif;
 
 
 
-                        }
+}
 
