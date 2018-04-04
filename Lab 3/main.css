@@ -75,11 +75,6 @@ h1 {
 
       }      
 
-@font-face {
-      font-family: 'Avenir Next';
-      src: url("http://www.yoursite.com/fonts/Avenir_Next.otf"); /* File to be stored at your site */
-      }
-
 .container_two {
                   text-align: center;
                   background-color: white;
@@ -249,7 +244,7 @@ h1 {
 
 body {
         background-color: white;
-        font-family: "Avenir Next" !important;
+        font-family: 'Raleway', sans-serif;
 
 
 

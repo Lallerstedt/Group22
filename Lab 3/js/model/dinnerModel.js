@@ -8,6 +8,7 @@ var DinnerModel = function() {
 	var currentDish;
 	var menu = [];
 	var observers = [];
+	var online;
 
 	this.addObserver = function(observer){
 		observers.push(observer);
@@ -158,7 +159,7 @@ var DinnerModel = function() {
 			URL += "&query=" + filter;
 		}
 
-		$.ajax( {
+			$.ajax( {
 
 			
 
@@ -176,7 +177,15 @@ var DinnerModel = function() {
 			error: function(error) {
 				errorCallback(error)
 			}
-		}) 
+		})
+			if(!navigator.onLine){
+			alert("You seem to be offline. Please check your internet connection to use the website.")
+		}
+
+		
+			
+
+		
 	}
 
 	//function that returns a dish of specific ID
@@ -185,7 +194,8 @@ var DinnerModel = function() {
 		var API_KEY = "Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB";
 		var URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information";
 
-		$.ajax( {
+		
+			$.ajax( {
 
 			url: URL,
 			headers: {
@@ -202,6 +212,12 @@ var DinnerModel = function() {
 				errorCallback(error)
 			}
 		}) 
+		
+		if(!navigator.onLine){
+			alert("You seem to be offline. Please check your internet connection to use the website.")
+		}
+
+		
 	}
 
 

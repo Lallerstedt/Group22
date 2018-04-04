@@ -5,6 +5,7 @@ var SidebarView = function(container,model) {
 
 	var numberOfGuests = container.find(".numberOfGuests");
 	numberOfGuests.html(model.getNumberOfGuests());
+	var total_price = container.find(".totalPrice");
 
 	this.plusButton = container.find(".plus_guest");
 	this.minusButton = container.find(".minus_guest");
@@ -30,13 +31,9 @@ var SidebarView = function(container,model) {
 			n += "0 kr";
 			n += "</div></div>";
 
-			
-			console.log(dishes.pricePerServing + dishes.pricePerServing);
-			price = price + dishes.pricePerServing;
-			console.log(price);
-			var total_price = container.find(".totalPrice");
+			price = price + (model.getNumberOfGuests()*dishes.pricePerServing);
 			//total_price.html(price*model.getNumberOfGuests() + " kr");
-			total_price.html(price);
+			total_price.html(price.toFixed(2));
     //knapp
 
 

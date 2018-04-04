@@ -12,6 +12,9 @@ var DishsearchView = function (container, model, type, search) {
 			var img_id = menu[dish].id;
 			var name = [];
 			name += menu[dish].title;
+
+
+
 			menu_items += "<nav>"
 			menu_items += "<div class= 'menu_dishes col-lg-3 col-md-3 col-sm-3 col-xs-3'><img src=";
 			menu_items += img_path;

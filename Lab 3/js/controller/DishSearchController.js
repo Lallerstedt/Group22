@@ -60,14 +60,11 @@ var DishSearchController = function(view, model, state) {
 
 
 
-
-    $("#food_pictures").click(function(){
+    $("#food_pictures").click(function(event){
       var id = event.target.id;
-      var title = document.getElementById(id).nextSibling.innerHTML;
+      //var title = document.getElementById(id).nextSibling.innerHTML;
       model.setCurrentDish(id);
       state.changeState(".dishinfo");
   });
-
-
 
 }
