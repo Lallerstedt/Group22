@@ -7,6 +7,7 @@ const DinnerModel = function () {
   let numberOfGuests = 2;
   let observers = [];
   let currentDish;
+  let menu = [];
 
   this.setNumberOfGuests = function (num) {
     numberOfGuests = num;
@@ -23,6 +24,18 @@ const DinnerModel = function () {
 
   this.setCurrentDish = function(dish) {
     currentDish = dish;
+  }
+
+  this.addToMenu = function(id) {
+    menu.push(id);
+  }
+
+  this.removeFromMenu = function(id) {
+    menu.pop(id);
+  }
+
+  this.getMenu = function () {
+    return menu;
   }
 
   // API Calls

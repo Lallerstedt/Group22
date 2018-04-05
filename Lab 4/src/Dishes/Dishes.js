@@ -80,8 +80,6 @@ class Dishes extends Component {
       })
     })
 
-    console.log("heeej" + this.props.model.getCurrentDish());
-    
   }
 
 

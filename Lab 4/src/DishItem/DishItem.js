@@ -13,15 +13,20 @@ class DishItem extends Component {
     }
 
     //and methods below
-    //method 1
-    //method 2
+    this.addToMenu = this.addToMenu.bind(this);
+  }
+
+  addToMenu(event){
+    this.props.model.addToMenu(event.target.id);
+    //this.props.model.addToMenu(2019);
+    alert("Meny!" + this.props.model.getMenu());
   }
 
   // this methods is called by React lifecycle when the 
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to setup model observer
   componentDidMount() {
-    
+
     this.props.model.addObserver(this); 
     modelInstance.getDish(this.props.model.getCurrentDish()).then(dishes => {
       this.setState({
@@ -49,7 +54,6 @@ class DishItem extends Component {
   update() {
     this.setState({
       numberOfGuests: this.props.model.getNumberOfGuests(),
-      currentDish: this.props.model.getCurrentDish()
     })
   }
 
@@ -76,7 +80,6 @@ class DishItem extends Component {
       dishesList = <div className="loader" id="loading_wheel"></div>
       break;
       case 'LOADED':
-      console.log("currentDish är:" + this.props.model.getCurrentDish());
       dishesList =
       <div className ="row" id="dish_info">
       
@@ -115,7 +118,7 @@ class DishItem extends Component {
       <div className="row">
       <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
       </div>
-      <span id="dishinfo_totalPrice">{this.state.dishes.pricePerServing}</span> SEK
+      <span id="dishinfo_totalPrice">{this.props.model.getNumberOfGuests() * this.state.dishes.pricePerServing}</span> SEK
       <br></br>
       </div>
       <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -136,11 +139,40 @@ class DishItem extends Component {
       <br></br>
       </div>
       </div>
+
+      <div id ="prep_button_area">
+      <br></br>
+      <br></br>
+
+      <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
       </div>
+
+      <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <button className = "menu_add btn btn-default" type="button" onClick={this.addToMenu} id = {this.state.dishes.id}>Add to menu</button>
+      </div>
+
+      <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      </div>
+
+      <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+      <Link to="/search">
+      <button className = "back_search btn btn-default" type="button" id = "button">Back to search</button>
+      </Link>
+      </div>
+      <div>
+      <br></br>
+      </div>
+      
+      </div>
+
+      </div>
+
+      
+
       break;
       default:
 
-      dishesList = <b>Failed to load data, please try again</b>
+      dishesList = <div className="loader" id="loading_wheel"></div>
 
       break;
 
@@ -155,24 +187,7 @@ class DishItem extends Component {
 
       <ul>{dishesList}</ul>
 
-      <div id ="prep_button_area">
-      <br></br>
-      <br></br>
 
-      <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-      </div>
-      <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-      <button className = "menu_add btn btn-default" type="button" id = "button">Add to menu</button>
-      </div>
-      <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-      </div>
-      <div className="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-      <Link to="/search">
-      <button className = "back_search btn btn-default" type="button" id = "button">Back to search</button>
-      </Link>
-      </div>
-      <br></br>
-      </div>
        <br></br>
       <br></br>
 
