@@ -9,7 +9,7 @@ class SelectDish extends Component {
       <div className="SelectDish">
         {/* We pass the model as property to the Sidebar component */}
         <Sidebar model={this.props.model}/>
-        <Dishes/>
+        <Dishes model={this.props.model} />
       </div>
     );
   }

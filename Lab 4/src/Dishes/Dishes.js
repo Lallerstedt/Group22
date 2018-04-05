@@ -20,6 +20,7 @@ class Dishes extends Component {
     this.handleType = this.handleType.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDish = this.handleDish.bind(this);
   }
 
   handleType(event) {
@@ -29,6 +30,12 @@ class Dishes extends Component {
   handleFilter(event) {
       this.setState({filter: event.target.value});
   }
+
+  handleDish(event){
+      this.props.model.setCurrentDish(event.target.id);
+  }
+
+
 
   handleSubmit(event) {
 
@@ -72,6 +79,8 @@ class Dishes extends Component {
         status: 'ERROR'
       })
     })
+
+    console.log("heeej" + this.props.model.getCurrentDish());
     
   }
 
@@ -91,7 +100,7 @@ class Dishes extends Component {
       dishesList = this.state.dishes.map((dish) =>
         <div key={dish.id} className= 'menu_dishes col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <Link to="dish">
-        <img src={path + dish.image} id={dish.id} alt={dish.title} value={this.state.value} onChange={this.handleChange}></img>
+        <img src={path + dish.image} id={dish.id} alt={dish.title} value={2012} onClick={this.handleDish}></img>
         <h4 key={dish.id}>{dish.title}</h4>
         </Link>
         </div>
@@ -105,8 +114,6 @@ class Dishes extends Component {
     }
 
     return (
-
-
 
       <div className="Dishes">
       <nav className="navbar navbar-default navbar-fixed-side" id="navbar_left">
