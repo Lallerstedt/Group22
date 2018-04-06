@@ -26,12 +26,14 @@ const DinnerModel = function () {
     currentDish = dish;
   }
 
-  this.addToMenu = function(id) {
-    menu.push(id);
+  this.addToMenu = function(dish) {
+    menu.push(dish);
+    notifyObservers();
   }
 
-  this.removeFromMenu = function(id) {
-    menu.pop(id);
+  this.removeFromMenu = function(dish) {
+    menu.pop(dish);
+    notifyObservers();
   }
 
   this.getMenu = function () {
@@ -44,11 +46,12 @@ const DinnerModel = function () {
     let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?number=50';
     if(type!==1 && type !== undefined) {
       url += "&type=" + type;
+
     }
     if(typeof(filter) === "string"){
       url += "&query=" + filter;
-    }
 
+    }
     return fetch(url, httpOptions)
     .then(processResponse)
     .catch(handleError)

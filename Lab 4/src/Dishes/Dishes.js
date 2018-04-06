@@ -35,10 +35,9 @@ class Dishes extends Component {
       this.props.model.setCurrentDish(event.target.id);
   }
 
-
-
-  handleSubmit(event) {
-
+  handleSubmit = (event) => {
+    event.preventDefault();
+    
       this.setState({
       status: 'INTIAL'
     })
@@ -67,6 +66,7 @@ class Dishes extends Component {
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to call the API and get the data
   componentDidMount = () => {
+
     // when data is retrieved we update the state
     // this will cause the component to re-render
     modelInstance.getAllDishes().then(dishes => {
@@ -79,7 +79,6 @@ class Dishes extends Component {
         status: 'ERROR'
       })
     })
-
   }
 
 
@@ -98,14 +97,14 @@ class Dishes extends Component {
       dishesList = this.state.dishes.map((dish) =>
         <div key={dish.id} className= 'menu_dishes col-lg-3 col-md-3 col-sm-3 col-xs-3'>
         <Link to="dish">
-        <img src={path + dish.image} id={dish.id} alt={dish.title} value={2012} onClick={this.handleDish}></img>
+        <img src={path + dish.image} id={dish.id} alt={dish.title} onClick={this.handleDish}></img>
         <h4 key={dish.id}>{dish.title}</h4>
         </Link>
         </div>
         )
       break;
       default:
-      dishesList = <b>Failed to load data, please try again</b>
+      dishesList = <div className="loader" id="loading_wheel"></div>
       
       break;
       
@@ -143,14 +142,9 @@ class Dishes extends Component {
       </div>
       <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
       <input type="submit" id="button" className="btn btn-default" value="Search" />
-      
       </div>
       </form>
       </div>
-
-
-
-
       <br></br>
       <br></br>
       </div>

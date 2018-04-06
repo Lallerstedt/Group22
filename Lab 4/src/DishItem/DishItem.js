@@ -10,6 +10,7 @@ class DishItem extends Component {
     this.state = {
       status: 'INIITIAL',
       numberOfGuests: this.props.model.getNumberOfGuests(),
+      currentDish: {}
     }
 
     //and methods below
@@ -17,9 +18,9 @@ class DishItem extends Component {
   }
 
   addToMenu(event){
-    this.props.model.addToMenu(event.target.id);
+    this.props.model.addToMenu(this.state.currentDish);
     //this.props.model.addToMenu(2019);
-    alert("Meny!" + this.props.model.getMenu());
+    //alert("Meny!" + this.props.model.getMenu());
   }
 
   // this methods is called by React lifecycle when the 
@@ -28,11 +29,10 @@ class DishItem extends Component {
   componentDidMount() {
 
     this.props.model.addObserver(this); 
-    modelInstance.getDish(this.props.model.getCurrentDish()).then(dishes => {
+    modelInstance.getDish(this.props.model.getCurrentDish()).then(dish => {
       this.setState({
         status: 'LOADED',
-        dishes: dishes,
-
+        currentDish: dish,
       })
     }).catch(() => {
       this.setState({
@@ -74,19 +74,19 @@ class DishItem extends Component {
     
     // depending on the state we either generate
     // useful message to the user or show the list
-    // of returned dishes
+    // of returned dish
     switch (this.state.status) {
       case 'INITIAL':
       dishesList = <div className="loader" id="loading_wheel"></div>
       break;
       case 'LOADED':
-      dishesList =
+      dishesList = 
       <div className ="row" id="dish_info">
       
       <div className= 'menu_dishes col-lg-4 col-md-4 col-sm-4 col-xs-12'>
-      <h2 key={this.state.dishes.id}>{this.state.dishes.title}</h2>
+      <h2 key={this.state.currentDish.id}>{this.state.currentDish.title}</h2>
       <div className= 'col-lg-4 col-md-4 col-sm-4 col-xs-12'>
-      <img src={this.state.dishes.image} id={this.state.dishes.id} alt={this.state.dishes.title}></img>
+      <img src={this.state.currentDish.image} id={this.state.currentDish.id} alt={this.state.currentDish.title}></img>
       </div>
       </div>
 
@@ -99,7 +99,7 @@ class DishItem extends Component {
       <div className="row">
 
       
-      {this.state.dishes.extendedIngredients.map((i) => 
+      {this.state.currentDish.extendedIngredients.map((i) => 
         <div>
         <div className='col-lg-5 col-md-5 col-sm-5 col-xs-4'>
         {i.name}
@@ -118,7 +118,7 @@ class DishItem extends Component {
       <div className="row">
       <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
       </div>
-      <span id="dishinfo_totalPrice">{this.props.model.getNumberOfGuests() * this.state.dishes.pricePerServing}</span> SEK
+      <span id="dishinfo_totalPrice">{this.props.model.getNumberOfGuests() * this.state.currentDish.pricePerServing}</span> SEK
       <br></br>
       </div>
       <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -134,7 +134,7 @@ class DishItem extends Component {
       <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
       <h2>Preparation</h2>
       <span id="dish_description">
-      {this.state.dishes.instructions}
+      {this.state.currentDish.instructions}
       </span>
       <br></br>
       </div>
@@ -148,7 +148,7 @@ class DishItem extends Component {
       </div>
 
       <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-      <button className = "menu_add btn btn-default" type="button" onClick={this.addToMenu} id = {this.state.dishes.id}>Add to menu</button>
+      <button className = "menu_add btn btn-default" type="button" onClick={this.addToMenu} id = {this.state.currentDish}>Add to menu</button>
       </div>
 
       <div className="col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -182,7 +182,7 @@ class DishItem extends Component {
     return (
 
 
-      <div className="Dishes">
+      <div className="dish">
       <nav className="navbar navbar-default navbar-fixed-side" id="navbar_left">
 
       <ul>{dishesList}</ul>
