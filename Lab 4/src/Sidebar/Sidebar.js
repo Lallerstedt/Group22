@@ -73,10 +73,11 @@ class Sidebar extends Component {
 
 
       dishesList = this.state.menu.map((dish) =>
-          <div>
+        <div>
         <h3 key={dish.id}>{dish.title}</h3>
         </div>
         )
+
       
       
       return (
