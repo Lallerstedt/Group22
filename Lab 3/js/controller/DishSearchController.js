@@ -46,7 +46,6 @@ var DishSearchController = function(view, model, state) {
 
   //Search button
 
-
     view.search_button.click(function(){
       var string = view.search_string.val();
       if(string){
@@ -55,14 +54,12 @@ var DishSearchController = function(view, model, state) {
       if(string == undefined){
         view.update(undefined, undefined);
       }
-
     });
 
 
 
     $("#food_pictures").click(function(event){
       var id = event.target.id;
-      //var title = document.getElementById(id).nextSibling.innerHTML;
       model.setCurrentDish(id);
       state.changeState(".dishinfo");
   });

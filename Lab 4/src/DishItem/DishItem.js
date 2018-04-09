@@ -23,16 +23,16 @@ class DishItem extends Component {
     //alert("Meny!" + this.props.model.getMenu());
   }
 
-  // this methods is called by React lifecycle when the 
+  // this methods is called by React lifecycle when the
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to setup model observer
   componentDidMount() {
 
-    this.props.model.addObserver(this); 
+    this.props.model.addObserver(this);
     modelInstance.getDish(this.props.model.getCurrentDish()).then(dish => {
       this.setState({
         status: 'LOADED',
-        currentDish: dish,
+        currentDish: dish
       })
     }).catch(() => {
       this.setState({
@@ -71,7 +71,7 @@ class DishItem extends Component {
 
     let dishesList = null;
     //let path = "https://spoonacular.com/recipeImages/";
-    
+
     // depending on the state we either generate
     // useful message to the user or show the list
     // of returned dish
@@ -80,9 +80,9 @@ class DishItem extends Component {
       dishesList = <div className="loader" id="loading_wheel"></div>
       break;
       case 'LOADED':
-      dishesList = 
+      dishesList =
       <div className ="row" id="dish_info">
-      
+
       <div className= 'menu_dishes col-lg-4 col-md-4 col-sm-4 col-xs-12'>
       <h2 key={this.state.currentDish.id}>{this.state.currentDish.title}</h2>
       <div className= 'col-lg-4 col-md-4 col-sm-4 col-xs-12'>
@@ -95,11 +95,11 @@ class DishItem extends Component {
 
       <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12" id = "ingredients_area">
       <h5>Ingredients for: {this.state.numberOfGuests} <span id="dish_number"></span> people</h5>
-      
+
       <div className="row">
 
-      
-      {this.state.currentDish.extendedIngredients.map((i) => 
+
+      {this.state.currentDish.extendedIngredients.map((i) =>
         <div>
         <div className='col-lg-5 col-md-5 col-sm-5 col-xs-4'>
         {i.name}
@@ -112,7 +112,7 @@ class DishItem extends Component {
         </div>
         </div>
         )}
-      
+
       </div>
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "total_price">
       <div className="row">
@@ -124,7 +124,7 @@ class DishItem extends Component {
       <div className="col-lg-4 col-md-4 col-sm-4 col-xs-4">
       <div id="dishInfoPrice">
       <p id="dishPrice"></p>
-      </div> 
+      </div>
       </div>
       </div>
       </div>
@@ -162,12 +162,12 @@ class DishItem extends Component {
       <div>
       <br></br>
       </div>
-      
-      </div>
 
       </div>
 
-      
+      </div>
+
+
 
       break;
       default:
@@ -208,5 +208,3 @@ class DishItem extends Component {
 
 
 export default DishItem;
-
-

@@ -1,43 +1,68 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+//import {model} from '../data/DinnerModel';
 class Overview extends Component {
 
   constructor(props) {
-    super(props)
-
-    // we put on state the properties we want to use and modify in the component
+    super(props);
+    // We create the state to store the various statuses
+    // e.g. API data loading or error
     this.state = {
-      numberOfGuests: this.props.model.getNumberOfGuests()
+      status: 'INITIAL',
+      menu: this.props.model.getMenu()
     }
   }
 
-  // this methods is called by React lifecycle when the
-  // component is actually shown to the user (mounted to DOM)
-  // that's a good place to setup model observer
-  componentDidMount() {
-    this.props.model.addObserver(this)
-  }
+  componentDidMount = () => {
+    this.props.model.addObserver(this);
 
-  // this is called when component is removed from the DOM
-  // good place to remove observer
+    // when data is retrieved we update the state
+    // this will cause the component to re-render
+    /*var menu = this.props.model.getMenu()
+    for(var i = 0; i < menu.length; i++){
+      modelInstance.getDish(menu[i]).then(dishes => {
+      this.setState({
+        status: 'LOADED',
+        i: dishes
+      })
+    }).catch(() => {
+      this.setState({
+        status: 'ERROR'
+      })
+    })
+  }*/
+
+    }
+
   componentWillUnmount() {
-    this.props.model.removeObserver(this)
+      this.props.model.removeObserver(this)
   }
 
-  // in our update function we modify the state which will
-  // cause the component to re-render
   update() {
     this.setState({
-      numberOfGuests: this.props.model.getNumberOfGuests()
+      numberOfGuests: this.props.model.getNumberOfGuests(),
+      menu: this.props.model.getMenu()
     })
-  }
 
-  // our handler for the input's on change event
-  onNumberOfGuestsChanged = (e) => {
-    this.props.model.setNumberOfGuests(+e.target.value)
   }
 
   render() {
+
+    let dishesList;
+    let finalPrice = 0;
+
+
+      dishesList = this.state.menu.map((dish) =>
+        <div key={dish.id} className="col-sm-3 col-lg-3 col-md-3 col-sx-12">
+        <img src={dish.image} id={dish.id} alt={dish.title} onClick={this.handleDish}></img>
+        <h4 key={dish.id}>{dish.title}</h4>
+        </div>
+        )
+
+        this.state.menu.map((dish) =>
+         finalPrice += dish.pricePerServing * this.props.model.getNumberOfGuests()
+         )
+
     return (
       <div className="Overview">
       <nav className="navbar navbar-default navbar-fixed-side">
@@ -45,29 +70,13 @@ class Overview extends Component {
       <div className="col-sm-1 col-lg-1 col-md-1 col-sx-0">
       </div>
       <div className="col-sm-9 col-lg-9 col-md-9 col-sx-10"><br/>
-      <div className ="row">
-      <div className="col-sm-3 col-lg-3 col-md-3 col-sx-3">
-      {/*<h4>Dishname</h4><img></img>
-      </div>
-      <div className="col-sm-3 col-lg-3 col-md-3 col-sx-3">
-      <h4>Dishname</h4><img></img>
-      </div>
-      <div className="col-sm-3 col-lg-3 col-md-3 col-sx-3">
-      <h4>Dishname</h4><img></img>
-      </div>
-      <div className="col-sm-3 col-lg-3 col-md-3 col-sx-3">
-      <h4>Dishname</h4><img></img>
-      </div>
-      <div className="col-sm-3 col-lg-3 col-md-3 col-sx-3">
-      <h4>Dishname</h4><img></img>
-      </div>
-      <div className="col-sm-3 col-lg-3 col-md-3 col-sx-3">
-      <h4>Dishname</h4><img></img>*/}
-      </div>
-      </div>
+<center>
+  {dishesList}
+</center>
+
       </div>
       <div className="col-sm-2 col-lg-2 col-md-2 col-sx-2">
-      <h5>Total price: {this.state.numberOfGuests}</h5>
+      <h5>Total price: {finalPrice}</h5>
       </div>
       </div>
       <br/>

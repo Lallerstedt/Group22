@@ -6,42 +6,41 @@ class Sidebar extends Component {
 
   constructor(props) {
     super(props)
-    
+
     // we put on state the properties we want to use and modify in the component
     this.state = {
+      status: 'INITIAL',
       numberOfGuests: this.props.model.getNumberOfGuests(),
-      menu : this.props.model.getMenu()
+      menu: this.props.model.getMenu(),
     }
+    this.handleMenu = this.handleMenu.bind(this);
   }
 
-// this methods is called by React lifecycle when the 
+// this methods is called by React lifecycle when the
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to setup model observer
-  // this methods is called by React lifecycle when the 
+  // this methods is called by React lifecycle when the
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to call the API and get the data
   componentDidMount = () => {
     this.props.model.addObserver(this);
-    // when data is retrieved we update the state
-    // this will cause the component to re-render
-    /*var menu = this.props.model.getMenu();
-    for(var i = 0; i < menu.length; i++){
-      //console.log(menu[i]);
-      modelInstance.getDish(menu[i]).then(dishes => {
-      //  console.log(this.props.model.getDish(menu[i]));
-      //modelInstance.getAllDishes().then(dishes => {
-        this.setState({
+
+    modelInstance.getDish().then(dishes => {
+
+      this.setState({
         status: 'LOADED',
-        i: dishes
       })
     }).catch(() => {
       this.setState({
         status: 'ERROR'
       })
-    })*/
-    //}
+    })
+
+    this.props.model.loadCookie;
 
   }
+
+
 
   // this is called when component is removed from the DOM
   // good place to remove observer
@@ -55,7 +54,20 @@ class Sidebar extends Component {
     this.setState({
       numberOfGuests: this.props.model.getNumberOfGuests(),
       menu: this.props.model.getMenu()
+
     })
+    console.log(this.props.model.loadCookie);
+    this.props.model.loadCookie;
+
+  }
+
+
+
+  handleMenu(event){
+
+      /*if(!this.state.menu.length){
+        alert("Your menu is empty");
+      }*/
   }
 
   // our handler for the input's on change event
@@ -67,19 +79,53 @@ class Sidebar extends Component {
 
   render() {
 
-    //let dishesList = this.props.model.getMenu();
     let dishesList;
-      
+    let finalPrice = 0;
+
+
+
+    switch (this.state.status) {
+      case 'INITIAL':
+      dishesList = <div className="loader" id="loading_wheel"></div>
+      break;
+      case 'LOADED':
+
 
 
       dishesList = this.state.menu.map((dish) =>
-        <div>
-        <h3 key={dish.id}>{dish.title}</h3>
+        <div className = "row">
+        <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <h5 key={dish.id}>{dish.title}</h5>
         </div>
+        <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <h5 key={dish.id}>{dish.pricePerServing * this.props.model.getNumberOfGuests()}</h5>
+        </div>
+        </div>
+
         )
 
-      
-      
+        this.state.menu.map((dish) =>
+         finalPrice += dish.pricePerServing * this.props.model.getNumberOfGuests()
+         )
+
+        if (!this.state.menu.length) {
+            dishesList = "You have nothing in the menu";
+            finalPrice = 0;
+        }
+
+
+      break;
+      default:
+      dishesList = "Empty BAJS"
+
+      break;
+
+    }
+
+
+
+
+
       return (
         <div className="Sidebar">
         <div className="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -87,27 +133,35 @@ class Sidebar extends Component {
 
         <div className="col-lg-11 col-md-11 col-sm-11 col-xs-11">
         <h5 className="numberOfGuests">Guests: <input value={this.state.numberOfGuests} onChange={this.onNumberOfGuestsChanged}/>
-        {/*<button className = "plus_guest" className="btn" onChange={this.onNumberOfGuestsChanged}> + </button>
-      <button className="minus_guest" className="btn" onChange={this.onNumberOfGuestsChanged}> - </button>*/}
       </h5>
       <br></br>
       <div className = "row">
-      <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <h5>Dish name</h5>
+      <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+      <h5>Dish name:</h5>
       </div>
-      <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      <h5> PRICE </h5>
+      <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <h5> Price: </h5>
       </div>
       </div>
       <div className="menu">
       {dishesList}
-      </div>
 
       </div>
+
       <br></br>
+      <div className = "row">
+      <div className="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+      <h5>Total Price: </h5>
+      </div>
+      <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      {finalPrice} kr
+      </div>
+      </div>
+      </div>
+        <br></br>
       <center>
       <Link to='/overview'>
-      <button className="confirm_button" id="button"> Confirm dinner </button>
+      <button className="confirm_button" id="button"  onClick={this.handleMenu}> Confirm dinner</button>
       </Link>
       </center>
       <br></br>

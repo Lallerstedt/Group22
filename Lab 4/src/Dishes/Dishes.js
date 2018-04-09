@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Dishes.css';
-// Alternative to passing the moderl as the component property, 
+// Alternative to passing the moderl as the component property,
 // we can import the model instance directly
 import {modelInstance} from '../data/DinnerModel';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ class Dishes extends Component {
   constructor(props) {
     super(props);
     // We create the state to store the various statuses
-    // e.g. API data loading or error 
+    // e.g. API data loading or error
     this.state = {
       status: 'INITIAL',
       type: '1',
@@ -37,7 +37,7 @@ class Dishes extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+
       this.setState({
       status: 'INTIAL'
     })
@@ -62,7 +62,7 @@ class Dishes extends Component {
 
   }
 
-  // this methods is called by React lifecycle when the 
+  // this methods is called by React lifecycle when the
   // component is actually shown to the user (mounted to DOM)
   // that's a good place to call the API and get the data
   componentDidMount = () => {
@@ -85,7 +85,7 @@ class Dishes extends Component {
   render() {
     let dishesList = null;
     let path = "https://spoonacular.com/recipeImages/";
-    
+
     // depending on the state we either generate
     // useful message to the user or show the list
     // of returned dishes
@@ -105,9 +105,9 @@ class Dishes extends Component {
       break;
       default:
       dishesList = <div className="loader" id="loading_wheel"></div>
-      
+
       break;
-      
+
     }
 
     return (
@@ -123,7 +123,7 @@ class Dishes extends Component {
       <form onSubmit={this.handleSubmit}>
       <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
       <input type="text" value={this.state.value} onChange={this.handleFilter} id="keyword_form keyword" placeholder='Enter keyword'/>
-      </div>      
+      </div>
       <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3" id = "select_type">
       <select id = "type" className="select" value={this.state.type} onChange={this.handleType}>
       <option value="1">All</option>
@@ -145,8 +145,7 @@ class Dishes extends Component {
       </div>
       </form>
       </div>
-      <br></br>
-      <br></br>
+
       </div>
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "food_pictures">
       <span id="all_dishes"></span>
@@ -156,7 +155,7 @@ class Dishes extends Component {
       </div>
       </nav>
 
-      
+
       </div>
       </nav>
       </div>
