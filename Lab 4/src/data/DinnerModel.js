@@ -14,7 +14,7 @@ const DinnerModel = function () {
 
   this.setNumberOfGuests = function (num) {
     numberOfGuests = num;
-    cookie.save('numberOfGuests', num)
+    localStorage.setItem('numberOfGuests', num);
     notifyObservers();
   };
 
@@ -33,63 +33,62 @@ const DinnerModel = function () {
     .catch(handleError)
   }
 
-  const loadCookie = function () {
-    if(cookie.load('numberOfGuests') === undefined){
-      numberOfGuests = 2;
-    }
-    else{
-      numberOfGuests = cookie.load('numberOfGuests');
-    }
-    
-    
-    if(cookie.load('menu') === undefined){
+  /*const loadCookie = function () {
+
+    if(idsToSave === undefined){
       menu = [];
 
       console.log("Cookie:" + cookie.load('menu'));
       console.log("Hittar inte en meny, " + menu);
 
-    }
-     
+    }  
     else{
       console.log("Det finns en meny");
+      for (var i = 0; i <= idsToSave.length; i++) {
+        menu.push(dish(idsToSave[i]));
+      }
       for (var i = 0; i < menu.length; i++) {
         menu.push(dish(cookie.load('menu')));
-        console.log(menu);
       }
       console.log("What is the menu", menu)
     }
   }
-  loadCookie();
+  //loadCookie();
   /*this.getId = function (index) {
     return menu[index].id;
   }*/
 
   this.getNumberOfGuests = function () {
-    return numberOfGuests;
-  };
-
-  this.getCurrentDish = function () {
-    return currentDish;
+   if(localStorage.getItem('numberOfGuests') === null){
+    numberOfGuests = 2;
   }
-
-  this.setCurrentDish = function(dish) {
-    currentDish = dish;
+  else{
+    numberOfGuests = localStorage.getItem('numberOfGuests');
   }
+  return numberOfGuests;
+}
 
-  this.addToMenu = function(dish) {
-    menu.push(dish);
-    cookie.save('menu', dish.id);
-    notifyObservers();
-  }
+this.getCurrentDish = function () {
+  return currentDish;
+}
 
-  this.removeFromMenu = function(dish) {
-    menu.pop(dish);
-    notifyObservers();
-  }
+this.setCurrentDish = function(dish) {
+  currentDish = dish;
+}
 
-  this.getMenu = function () {
+this.addToMenu = function(dish) {
+  menu.push(dish);
+  localStorage.setItem('menu', JSON.stringify(menu));
+  notifyObservers();
+}
+
+this.getMenu = function () {
+  if(localStorage.getItem('menu') === null){
     return menu;
   }
+  menu = JSON.parse(localStorage.getItem('menu'));
+  return menu;
+}
 
   // API Calls
 

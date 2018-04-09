@@ -35,9 +35,6 @@ class Sidebar extends Component {
         status: 'ERROR'
       })
     })
-
-    this.props.model.loadCookie;
-
   }
 
 
@@ -56,8 +53,6 @@ class Sidebar extends Component {
       menu: this.props.model.getMenu()
 
     })
-    console.log(this.props.model.loadCookie);
-    this.props.model.loadCookie;
 
   }
 
@@ -65,9 +60,13 @@ class Sidebar extends Component {
 
   handleMenu(event){
 
-      /*if(!this.state.menu.length){
+      if(this.state.menu.length > 0){
+        // :)
+      }
+      else{
         alert("Your menu is empty");
-      }*/
+        event.preventDefault();
+      }
   }
 
   // our handler for the input's on change event
